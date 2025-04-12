@@ -1,5 +1,4 @@
 #include "lists.h"
-#include "linked_lists.c"
 
 /**
  * insert_node - a function that inserts a number into
