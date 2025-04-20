@@ -36,7 +36,7 @@ heap_t *heap_insert(heap_t **root, int value)
 		current = current->parent;
 	}
 
-	return (new_node);
+	return (current);
 }
 
 /**
