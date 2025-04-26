@@ -1,4 +1,8 @@
 #!/usr/bin/python3
+"""
+    A script that determines the number of operations needed
+    to obtain n H in a text file with minimum operations.
+"""
 
 def minOperations(n):
     """
