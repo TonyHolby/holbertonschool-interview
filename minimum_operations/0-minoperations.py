@@ -4,6 +4,7 @@
     to obtain n H in a text file with minimum operations.
 """
 
+
 def minOperations(n):
     """
         Returns the number of operations (copy all or paste)
