@@ -39,5 +39,5 @@ int is_palindrome(listint_t **head)
     if (head == NULL || *head == NULL)
         return 1;
 
-    return helper(head, *head);
+    return is_palindrome_helper(head, *head);
 }
