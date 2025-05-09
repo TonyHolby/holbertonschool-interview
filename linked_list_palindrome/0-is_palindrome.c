@@ -16,7 +16,7 @@ int is_palindrome_helper(listint_t **start, listint_t *end)
     if (end == NULL)
         return 1;
 
-    if (!helper(start, end->next))
+    if (!is_palindrome_helper(start, end->next))
         return 0;
 
     if ((*start)->n != end->n)
