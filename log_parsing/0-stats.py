@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """ A script that reads stdin line by line and computes metrics. """
 import sys
 import re
@@ -17,7 +17,7 @@ log_pattern = re.compile(
 
 
 def print_stats():
-    """Affiche les statistiques collectées."""
+    """ A function that prints metrics."""
     print("File size: {}".format(total_size))
     for code in sorted(valid_status_codes):
         if status_counts[code] > 0:
