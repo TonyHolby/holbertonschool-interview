@@ -25,7 +25,6 @@ log_pattern = re.compile(
 
 
 def print_stats():
-    """A function that prints metrics."""
     print("File size: {}".format(total_size))
     for code in sorted(valid_status_codes):
         if status_counts[code] > 0:
