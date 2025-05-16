@@ -18,8 +18,8 @@ log_pattern = re.compile(
     r'^(\S+) - \[(.*?)\] "GET /projects/260 HTTP/1\.1" (\d{3}) (\d+)$'
 )
 
-
 """A function that that prints metrics."""
+
 
 def print_stats():
     """A function that prints metrics."""
