@@ -1,5 +1,8 @@
 #!/usr/bin/python3
-""" A script that reads stdin line by line and computes metrics. """
+"""Script that reads stdin and computes HTTP metrics:
+    total file size
+    count of each status code
+"""
 import sys
 import re
 from collections import defaultdict
@@ -11,16 +14,13 @@ line_count = 0
 
 valid_status_codes = {'200', '301', '400', '401', '403', '404', '405', '500'}
 
-""" A class named compile that compiles the expression """
-
-
 log_pattern = re.compile(
     r'^(\S+) - \[(.*?)\] "GET /projects/260 HTTP/1\.1" (\d{3}) (\d+)$'
 )
 
 
 def print_stats():
-    """ A function that prints metrics."""
+    """A function that prints metrics."""
     print("File size: {}".format(total_size))
     for code in sorted(valid_status_codes):
         if status_counts[code] > 0:
