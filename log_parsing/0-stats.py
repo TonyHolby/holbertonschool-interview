@@ -1,13 +1,5 @@
 #!/usr/bin/python3
-"""
-Log parser script.
-
-Reads lines from standard input in a predefined format and computes:
-- Total file size
-- Count of each HTTP status code (200, 301, etc.)
-
-Stats are printed every 10 lines or on keyboard interruption (Ctrl+C).
-"""
+""" A script that reads stdin line by line and computes metrics. """
 import sys
 import re
 from collections import defaultdict
