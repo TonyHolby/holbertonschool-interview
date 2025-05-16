@@ -1,7 +1,12 @@
 #!/usr/bin/python3
-"""Script that reads stdin and computes HTTP metrics:
-    total file size
-    count of each status code
+"""
+Log parser script.
+
+Reads lines from standard input in a predefined format and computes:
+- Total file size
+- Count of each HTTP status code (200, 301, etc.)
+
+Stats are printed every 10 lines or on keyboard interruption (Ctrl+C).
 """
 import sys
 import re
@@ -17,8 +22,6 @@ valid_status_codes = {'200', '301', '400', '401', '403', '404', '405', '500'}
 log_pattern = re.compile(
     r'^(\S+) - \[(.*?)\] "GET /projects/260 HTTP/1\.1" (\d{3}) (\d+)$'
 )
-
-"""A function that that prints metrics."""
 
 
 def print_stats():
