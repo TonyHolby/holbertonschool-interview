@@ -3,8 +3,6 @@
     total file size
     count of each status code
 """
-
-
 import sys
 import re
 from collections import defaultdict
@@ -16,6 +14,7 @@ line_count = 0
 
 valid_status_codes = {'200', '301', '400', '401', '403', '404', '405', '500'}
 
+"""A function that compiles pattern expression."""
 log_pattern = re.compile(
     r'^(\S+) - \[(.*?)\] "GET /projects/260 HTTP/1\.1" (\d{3}) (\d+)$'
 )
