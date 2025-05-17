@@ -14,8 +14,9 @@ if __name__ == '__main__':
         '200', '301', '400', '401', '403', '404', '405', '500'}
 
     log_pattern = re.compile(
-        r'^(\S+) - \[(.*?)\] "(\w+) (\S+) HTTP/1\.1" (\d{3}) (\d+)$'
-    )
+        r'^(\d{1,3}(?:\.\d{1,3}){3}) - '
+        r'\[(.*?)\] "(\w+) (\S+) HTTP/1\.1" (\d{3}) (\d+)$'
+        )
 
     def print_stats():
         print("File size: {}".format(total_size))
@@ -27,22 +28,14 @@ if __name__ == '__main__':
         for line in sys.stdin:
             line = line.strip()
             match = log_pattern.match(line)
-            if not match:
-                pass
             if match:
-                method = match.group(3)
-                url = match.group(4)
                 status_code = match.group(5)
                 file_size = match.group(6)
-                if method != "GET" or url != "/projects/260":
-                    pass
-                try:
-                    total_size += int(file_size)
-                    if status_code in valid_status_codes:
-                        status_counts[status_code] += 1
+                total_size += int(file_size)
 
-                except ValueError:
-                    pass
+                if status_code in valid_status_codes:
+                    status_counts[status_code] += 1
+
             line_count += 1
             if line_count % 10 == 0:
                 print_stats()
