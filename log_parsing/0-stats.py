@@ -28,14 +28,14 @@ if __name__ == '__main__':
             line = line.strip()
             match = log_pattern.match(line)
             if not match:
-                continue 
+                pass
             if match:
                 method = match.group(3)
                 url = match.group(4)
                 status_code = match.group(5)
                 file_size = match.group(6)
                 if method != "GET" or url != "/projects/260":
-                    continue
+                    pass
                 try:
                     total_size += int(file_size)
                     if status_code in valid_status_codes:
