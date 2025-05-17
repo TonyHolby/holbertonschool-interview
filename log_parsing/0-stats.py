@@ -27,6 +27,8 @@ if __name__ == '__main__':
         for line in sys.stdin:
             line = line.strip()
             match = log_pattern.match(line)
+            if not match:
+                continue 
             if match:
                 method = match.group(3)
                 url = match.group(4)
@@ -38,6 +40,7 @@ if __name__ == '__main__':
                     total_size += int(file_size)
                     if status_code in valid_status_codes:
                         status_counts[status_code] += 1
+
                 except ValueError:
                     pass
             line_count += 1
