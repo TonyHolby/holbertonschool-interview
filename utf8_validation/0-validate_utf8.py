@@ -20,7 +20,7 @@ def validUTF8(data):
 
     for number in data:
         byte = number & 0xFF
-    
+
         if next_octet == 0:
             if byte < 128:
                 continue
