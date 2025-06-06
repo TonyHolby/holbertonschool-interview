@@ -22,6 +22,7 @@ def validUTF8(data):
         if number < 0 or number > 255:
             return False
 
+        number = number & 0xFF
         if next_octet == 0:
             if number < 128:
                 continue
