@@ -17,26 +17,24 @@ def validUTF8(data):
             True if data is a valid UTF-8 encoding, else return False.
     """
     next_octet = 0
-
+    
     for number in data:
-        if number < 0 or number > 255:
-            return False
-
-        number = number & 0xFF
+        byte = number & 0xFF
+        
         if next_octet == 0:
-            if number < 128:
+            if byte < 128:
                 continue
-            elif 192 <= number <= 223:
+            elif 192 <= byte <= 223:
                 next_octet = 1
-            elif 224 <= number <= 239:
+            elif 224 <= byte <= 239:
                 next_octet = 2
-            elif 240 <= number <= 247:
+            elif 240 <= byte <= 247:
                 next_octet = 3
             else:
                 return False
         else:
-            if number < 128 or number > 191:
+            if byte < 128 or byte > 191:
                 return False
             next_octet -= 1
-
+    
     return next_octet == 0
