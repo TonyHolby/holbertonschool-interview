@@ -31,7 +31,7 @@ def verify(placing, row, col):
 def solve_nqueens(n, placing, row):
     """
         Recursive backtracking function to solve N Queens
-        
+
         Args:
             n (int): the number of pieces to placing.
             placing (list): a list of positions of already placed queens,
