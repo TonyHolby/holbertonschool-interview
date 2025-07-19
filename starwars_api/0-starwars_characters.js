@@ -21,7 +21,6 @@ function requestPromise (url) {
 async function main () {
   const body = await requestPromise(urlPath);
   const movie = JSON.parse(body);
-  console.log(movie.title);
 
   for (const charUrl of movie.characters) {
     const charBody = await requestPromise(charUrl);
