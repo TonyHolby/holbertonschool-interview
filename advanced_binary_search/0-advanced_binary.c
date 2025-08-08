@@ -19,7 +19,7 @@ int advanced_binary(int *array, size_t size, int value)
 	int start = 0;
 	int end = size - 1;
 
-	return search_value(array, start, end, value);
+	return (search_value(array, start, end, value));
 }
 
 /**
