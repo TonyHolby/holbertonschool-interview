@@ -5,8 +5,8 @@
     specified keywords in the article titles, and prints the results sorted by
     count (descending order) and alphabetically (ascending, from a to z).
 """
-import requests
 import re
+import requests
 
 
 def count_words(subreddit, word_list, counts=None, after=None):
