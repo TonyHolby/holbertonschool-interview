@@ -92,6 +92,7 @@ int main(int argc, char *argv[])
 		{
 			int mul = (num1[i] - '0') * (num2[j] - '0');
 			int sum = mul + result[i + j + 1];
+
 			result[i + j + 1] = sum % 10;
 			result[i + j] += sum / 10;
 		}
