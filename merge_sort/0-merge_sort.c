@@ -4,7 +4,7 @@
  * merge_sort - Sorts an array of integers in ascending order using
  *              the Merge Sort algorithm.
  * @array: The array to be sorted.
- * @size: The number of element in the array.
+ * @size: The number of elements in the array.
  */
 void merge_sort(int *array, size_t size)
 {
@@ -18,7 +18,6 @@ void merge_sort(int *array, size_t size)
 		return;
 
 	merge_sort_recursive(array, temp, 0, size - 1);
-
 	free(temp);
 }
 
@@ -34,10 +33,10 @@ void merge_sort_recursive(int *array, int *temp, size_t left, size_t right)
 	if (left >= right)
 		return;
 
-	size_t mid = left + (right - left) / 2;
+	size_t mid = left + (right - left + 1) / 2;
 
-	merge_sort_recursive(array, temp, left, mid);
-	merge_sort_recursive(array, temp, mid + 1, right);
+	merge_sort_recursive(array, temp, left, mid - 1);
+	merge_sort_recursive(array, temp, mid, right);
 	merge(array, temp, left, mid, right);
 }
 
@@ -51,22 +50,22 @@ void merge_sort_recursive(int *array, int *temp, size_t left, size_t right)
  */
 void merge(int *array, int *temp, size_t left, size_t mid, size_t right)
 {
-	size_t i = left, j = mid + 1, k = left;
+	size_t i = left, j = mid, k = left;
 
 	printf("Merging...\n");
 	printf("[left]: ");
-	print_array(array + left, mid - left + 1);
+	print_array(array + left, mid - left);
 	printf("[right]: ");
-	print_array(array + mid + 1, right - mid);
+	print_array(array + mid, right - mid + 1);
 
-	while (i <= mid && j <= right)
+	while (i < mid && j <= right)
 	{
 		if (array[i] <= array[j])
 			temp[k++] = array[i++];
 		else
 			temp[k++] = array[j++];
 	}
-	while (i <= mid)
+	while (i < mid)
 		temp[k++] = array[i++];
 	while (j <= right)
 		temp[k++] = array[j++];
