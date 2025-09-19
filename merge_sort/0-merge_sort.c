@@ -57,47 +57,27 @@ void merge(int *array, int *temp, size_t left, size_t mid, size_t right)
 {
 	size_t i = left, j = mid + 1, k = left;
 
-	printf("Merging...\n");
-	printf("[left]: ");
-	print_subarray(array, left, mid);
-	printf("[right]: ");
-	print_subarray(array, mid + 1, right);
+    printf("Merging...\n");
+    printf("[left]: ");
+    print_array(array + left, mid - left + 1);
+    printf("[right]: ");
+    print_array(array + mid + 1, right - mid);
 
-	while (i <= mid && j <= right)
-	{
-		if (array[i] <= array[j])
-			temp[k++] = array[i++];
-		else
-			temp[k++] = array[j++];
-	}
+    while (i <= mid && j <= right)
+    {
+        if (array[i] <= array[j])
+            temp[k++] = array[i++];
+        else
+            temp[k++] = array[j++];
+    }
+    while (i <= mid)
+        temp[k++] = array[i++];
+    while (j <= right)
+        temp[k++] = array[j++];
 
-	while (i <= mid)
-		temp[k++] = array[i++];
-	while (j <= right)
-		temp[k++] = array[j++];
+    for (i = left; i <= right; i++)
+        array[i] = temp[i];
 
-	for (i = left; i <= right; i++)
-		array[i] = temp[i];
-
-	printf("[Done]: ");
-	print_subarray(array, left, right);
-}
-
-/**
- * print_subarray - Affiche une portion du tableau.
- * @array: the array being sorted.
- * @start: the index of the first element.
- * @end: the index of the last element.
- */
-void print_subarray(int *array, size_t start, size_t end)
-{
-	size_t i;
-
-	for (i = start; i <= end; i++)
-	{
-		if (i > start)
-			printf(", ");
-		printf("%d", array[i]);
-	}
-	printf("\n");
+    printf("[Done]: ");
+    print_array(array + left, right - left + 1);
 }
