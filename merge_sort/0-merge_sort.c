@@ -36,9 +36,13 @@ void merge_sort_recursive(int *array, int *temp, size_t left, size_t right)
 
 	size_t mid = left + (right - left) / 2;
 
-	merge_sort_recursive(array, temp, left, mid);
-	merge_sort_recursive(array, temp, mid + 1, right);
-	merge(array, temp, left, mid, right);
+	if (left < mid)
+        merge_sort_recursive(array, temp, left, mid);
+
+    if (mid + 1 < right)
+        merge_sort_recursive(array, temp, mid + 1, right);
+
+    merge(array, temp, left, mid, right);
 }
 
 /**
