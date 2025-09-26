@@ -5,23 +5,6 @@
 """
 
 
-def division(dividende, diviseur):
-    """
-        Performs a division between two numbers.
-
-        Args:
-            dividende (int): the number to be divided.
-            divisor (int): the number to divide by.
-
-        Returns:
-            The rest and the quotient of the division.
-    """
-    reste = dividende % diviseur
-    quotient = dividende // diviseur
-
-    return reste, quotient
-
-
 def makeChange(coins, total):
     """
         Determines the fewest number of coins needed to meet a given amount
@@ -38,14 +21,15 @@ def makeChange(coins, total):
     """
     if total <= 0:
         return 0
+    if not coins:
+        return -1
 
-    coins.sort(reverse=True)
-    sorted_coins = coins
-    result = 0
-    for coin in sorted_coins:
-        total, quotient = division(total, coin)
-        result += quotient
-        if total == 0:
-            return result
+    dp = [total + 1] * (total + 1)
+    dp[0] = 0
 
-    return -1
+    for amt in range(1, total + 1):
+        for coin in coins:
+            if coin <= amt:
+                dp[amt] = min(dp[amt], dp[amt - coin] + 1)
+
+    return dp[total] if dp[total] <= total else -1
