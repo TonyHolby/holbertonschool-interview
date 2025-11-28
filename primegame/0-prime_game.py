@@ -59,8 +59,8 @@ def isWinner(x, nums):
 
     for n in nums:
         primes_count = count_primes_numbers(n)
-        if primes_count == 0:
-            ben_wins_counter += 1
+        if primes_count <= 0:
+            continue
         elif primes_count % 2 == 1:
             maria_wins_counter += 1
         else:
