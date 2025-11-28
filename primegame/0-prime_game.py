@@ -64,7 +64,7 @@ def isWinner(x, nums):
         elif primes_count % 2 == 1:
             maria_wins_counter += 1
         else:
-            ben_wins += 1
+            ben_wins_counter += 1
 
     if maria_wins_counter > ben_wins_counter:
         return "Maria"
