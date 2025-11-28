@@ -54,7 +54,7 @@ def isWinner(x, nums):
 
         return sum(primes)
 
-    if x == 0 or not nums:
+    if x <= 0 or not nums:
         return None
 
     maria_wins_counter = 0
